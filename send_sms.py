@@ -22,7 +22,6 @@ def main():
     print ("Sending SMS to {}".format(NUM))
     if not ser.is_open:
         ser.open()
-        print("here1")
 
 if ser.is_open:
     sendCommand(OPERATE_SMS_MODE)
@@ -30,7 +29,6 @@ if ser.is_open:
     sendCommand(MSG)
     sendCommand('\x1A')	#sending CTRL-Z
                         #https://en.wikipedia.org/wiki/ASCII
-    print("here2")
 
 ser.close()
 
