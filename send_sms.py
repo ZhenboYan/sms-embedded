@@ -35,7 +35,6 @@ ser.close()
 if __name__ == "__main__":
     try:
         main()
-        print("here13")
 
     except ValueError as e:
         print ("Error : {}".format(e))
