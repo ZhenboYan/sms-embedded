@@ -1,40 +1,22 @@
-import sys
-import serial
-from time import sleep
-
-NUM = sys.argv[2]
-MSG = sys.argv[3]
-
-SERIAL_PORT = '/dev/{}'.format(sys.argv[1])
-
-SERIAL_RATE = 115200
-ser = serial.Serial(SERIAL_PORT,SERIAL_RATE)
+# Download the helper library from https://www.twilio.com/docs/python/install
+import os
+from twilio.rest import Client
 
 
-OPERATE_SMS_MODE = 'AT+CMGF=1\r'
-SEND_SMS = 'AT+CMGS="{}"\r'.format(NUM)
+# Find your Account SID and Auth Token at twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+# account_sid = os.environ['TWILIO_ACCOUNT_SID']
+# auth_token = os.environ['TWILIO_AUTH_TOKEN']
+account_sid = "ACc694da8ac49970a09c99ff6a81f6b872"
+auth_token = "aa91f359a3fd7ccbdc6e6388e76828d9"
 
-def sendCommand(command):
-    ser.write(command.encode())
-    sleep(0.2)
+client = Client(account_sid, auth_token)
 
-def main():
-    print ("Sending SMS to {}".format(NUM))
-    if not ser.is_open:
-        ser.open()
+message = client.messages \
+    .create(
+         body='test',
+         from_='+12137725021',
+         to='+18327742877'
+     )
 
-if ser.is_open:
-    sendCommand(OPERATE_SMS_MODE)
-    sendCommand(SEND_SMS)
-    sendCommand(MSG)
-    sendCommand('\x1A')	#sending CTRL-Z
-                        #https://en.wikipedia.org/wiki/ASCII
-
-ser.close()
-
-if __name__ == "__main__":
-    try:
-        main()
-
-    except ValueError as e:
-        print ("Error : {}".format(e))
+print(message.sid)
