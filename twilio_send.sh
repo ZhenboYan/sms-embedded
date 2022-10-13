@@ -1,4 +1,4 @@
-#! /bin/bash/
+#! /bin/bash
 
 curl -X POST https://api.twilio.com/2010-04-01/Accounts/ACc694da8ac49970a09c99ff6a81f6b872/Messages.json \
                 --data-urlencode "Body=testing" \
