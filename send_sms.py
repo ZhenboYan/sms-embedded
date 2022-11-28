@@ -16,7 +16,7 @@ message = client.messages \
     .create(
          body='test',
          from_='+12137725021',
-         to='+18327742877'
+         to='+1'
      )
 
 print(message.sid)
