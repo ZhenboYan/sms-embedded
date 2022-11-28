@@ -11,9 +11,9 @@ GPIO.setup(read_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 def reading_pin(pin):
     if GPIO.input(read_pin) == 0:
         print("Successfully Read Pin")
-        return 1
+        return True
     
-    return 0    
+    return False
     
 
 # Find your Account SID and Auth Token at twilio.com/console
