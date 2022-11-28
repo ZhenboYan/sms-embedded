@@ -4,7 +4,7 @@ from twilio.rest import Client
 from time import sleep
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 read_pin=4
 GPIO.setup(read_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
