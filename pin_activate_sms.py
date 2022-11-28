@@ -5,11 +5,11 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-read_pin=4
-GPIO.setup(read_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+input_pin=4
+GPIO.setup(input_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
 def reading_pin(pin):
-    if GPIO.input(read_pin) == 0:
+    if GPIO.input(input_pin) == 0:
         print("Successfully Read Pin")
         return True
     
@@ -26,7 +26,7 @@ message = "pin activated"
 client = Client(account_sid, auth_token)
 
 while(1):
-    if read_pin(read_pin):
+    if reading_pin(input_pin):
         message = client.messages \
             .create(
                 body=f'{message}',
