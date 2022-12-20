@@ -3,6 +3,7 @@ import os
 from twilio.rest import Client
 from time import sleep
 import RPi.GPIO as GPIO
+import time
 
 GPIO.setmode(GPIO.BCM)
 input_pin=4
@@ -25,7 +26,10 @@ message = "pin activated"
 
 client = Client(account_sid, auth_token)
 
-while(1):
+# run one minute
+time_end = time.time() + 60
+while time.time() < time_end:
+# while(1):
     if reading_pin(input_pin):
         message = client.messages \
             .create(
@@ -36,7 +40,7 @@ while(1):
             
         print(message.sid)
         print("a message is sent!")
-        print("now sleep 10s")
-        sleep(10)
+        print("now sleep 5s")
+        sleep(4.9)
     
-    sleep(0.2)
+    sleep(0.1)
