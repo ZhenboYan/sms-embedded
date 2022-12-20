@@ -36,7 +36,7 @@ while(1):
             
         print(message.sid)
         print("a message is sent!")
-        print("now sleep 30s")
-        sleep(30)
+        print("now sleep 10s")
+        sleep(10)
     
     sleep(0.2)
