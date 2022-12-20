@@ -1,0 +1,13 @@
+[Unit]
+Description=Run this script when internet is established
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/Desktop/sms-embedded/start_script.sh
+
+[Install]
+WantedBy=multi-user.target

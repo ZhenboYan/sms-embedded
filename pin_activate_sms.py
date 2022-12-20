@@ -27,9 +27,10 @@ message = "pin activated"
 client = Client(account_sid, auth_token)
 
 # run one minute
-time_end = time.time() + 60
-while time.time() < time_end:
-# while(1):
+# run_duration = 60 # unit in s
+# time_end = time.time() + run_duration
+# while time.time() < time_end:
+while(1):
     if reading_pin(input_pin):
         message = client.messages \
             .create(
@@ -41,6 +42,6 @@ while time.time() < time_end:
         print(message.sid)
         print("a message is sent!")
         print("now sleep 5s")
-        sleep(4.9)
+        sleep(4.8)
     
-    sleep(0.1)
+    sleep(0.2)
