@@ -1,3 +1,9 @@
+sudo systemctl edit --force --full pin_activate_sms.service
+sudo systemctl status pin_activate_sms.service 
+sudo systemctl enable pin_activate_sms.service 
+sudo systemctl start pin_activate_sms.service 
+sudo systemctl stop pin_activate_sms.service 
+
 [Unit]
 Description=Run this script when internet is established
 Wants=network-online.target
@@ -11,3 +17,4 @@ ExecStart=/home/pi/Desktop/sms-embedded/start_script.sh
 
 [Install]
 WantedBy=multi-user.target
+
